@@ -867,7 +867,7 @@ static int msg_rt_out(struct msg * msg)
 	struct msg *msgptr = msg;
 	DiamId_t qry_src = NULL;
 	size_t qry_src_len = 0;
-	
+	 LOG_I("****!!!@@he ROUTING-OUT message processing***!!!@@***\n\n");
 	/* Read the message header */
 	CHECK_FCT( fd_msg_hdr(msgptr, &hdr) );
 	is_req = hdr->msg_flags & CMD_FLAG_REQUEST;
@@ -921,6 +921,8 @@ static int msg_rt_out(struct msg * msg)
 		CHECK_FCT( pthread_rwlock_rdlock(&fd_g_activ_peers_rw) );
 		for (li = fd_g_activ_peers.next; li != &fd_g_activ_peers; li = li->next) {
 			struct fd_peer * p = (struct fd_peer *)li->o;
+			LOG_I("!!*pi_diamid:  %s \t pi_diamidlen: %d ****\n\n",p->p_hdr.info.pi_diamid,p->p_hdr.info.pi_diamidlen);
+			LOG_I("!!*pir_realm:  %s \t pir_realmlen: %d ****\n\n",p->p_hdr.info.runtime.pir_realm,p->p_hdr.info.runtime.pir_realmlen);
 			CHECK_FCT_DO( ret = fd_rtd_candidate_add(rtd, 
 							p->p_hdr.info.pi_diamid, 
 							p->p_hdr.info.pi_diamidlen, 
