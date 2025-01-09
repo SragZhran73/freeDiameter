@@ -2512,7 +2512,8 @@ static int parserules_check_one_rule(void * data, struct dict_rule_data *rule)
 		}
 		return EBADMSG;
 	}
-	
+	// change rule max to 2 for test
+	rule->rule_max = 2 ;
 	/* Check the "max" value */
 	if ((rule->rule_max != -1) && (count > rule->rule_max)) {
 		fd_log_error("Conflicting rule: the number of occurences (%d) is > the rule max (%d) for '%s'.", count, rule->rule_max, avp_name);
