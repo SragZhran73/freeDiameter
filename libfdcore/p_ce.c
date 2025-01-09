@@ -260,7 +260,7 @@ static void cleanup_remote_CE_info(struct fd_peer * peer)
 static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct fd_pei * error, uint32_t *rc)
 {
 	struct avp * avp = NULL;
-	
+	LOG_I("*****!!!!!@@@@@@@@@@@!!!!!!!!!*** ");
 	cleanup_remote_CE_info(peer);
 	
 	CHECK_FCT( fd_msg_browse( msg, MSG_BRW_FIRST_CHILD, &avp, NULL) );
@@ -306,6 +306,7 @@ static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct f
 					error->pei_errcode = "DIAMETER_AVP_NOT_ALLOWED";
 					error->pei_message = "Your Origin-Host value does not match my configuration.";
 					error->pei_avp = avp;
+					LOG_I("***** Your Origin-Host value does not match my configuration*** ");
 					return EINVAL;
 				}
 
@@ -325,6 +326,7 @@ static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct f
 					error->pei_errcode = "DIAMETER_AVP_OCCURS_TOO_MANY_TIMES";
 					error->pei_message = "I found several Origin-Realm AVPs";
 					error->pei_avp = avp;
+					LOG_I("***** I found several Origin-Realm AVPs ");
 					return EINVAL;
 				}
 				
@@ -333,6 +335,7 @@ static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct f
 					error->pei_errcode = "DIAMETER_INVALID_AVP_VALUE";
 					error->pei_message = "Your Origin-Realm contains invalid characters.";
 					error->pei_avp = avp;
+					LOG_I("***** Your Origin-Realm contains invalid character ");
 					return EINVAL;
 				}
 				
@@ -358,6 +361,7 @@ static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct f
 							/* in case of error, assume the AVP value was wrong */
 							error->pei_errcode = "DIAMETER_INVALID_AVP_VALUE";
 							error->pei_avp = avp;
+							LOG_I("***** in case of error, assume the AVP value was wrong*** ");
 							return EINVAL;
 						} );
 
@@ -380,6 +384,7 @@ static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct f
 					error->pei_errcode = "DIAMETER_AVP_OCCURS_TOO_MANY_TIMES";
 					error->pei_message = "I found several Vendor-Id AVPs";
 					error->pei_avp = avp;
+					LOG_I("***** I found several Vendor-Id AVPs*** ");
 					return EINVAL;
 				}
 				
@@ -400,6 +405,7 @@ static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct f
 					error->pei_errcode = "DIAMETER_AVP_OCCURS_TOO_MANY_TIMES";
 					error->pei_message = "I found several Product-Name AVPs";
 					error->pei_avp = avp;
+					LOG_I("***** I found several Product-Name AVPs*** ");
 					return EINVAL;
 				}
 
@@ -421,6 +427,7 @@ static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct f
 					error->pei_errcode = "DIAMETER_AVP_OCCURS_TOO_MANY_TIMES";
 					error->pei_message = "I found several Origin-State-Id AVPs";
 					error->pei_avp = avp;
+					LOG_I("***** I found several Origin-State-Id AVPs*** ");
 					return EINVAL;
 				}
 				
@@ -500,6 +507,7 @@ static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct f
 							TRACE_DEBUG(FULL, "Invalid Vendor-Specific-Application-Id AVP received");
 							error->pei_errcode = "DIAMETER_INVALID_AVP_VALUE";
 							error->pei_avp = avp;
+							LOG_I("*****Invalid Vendor-Specific-Application-Id AVP received*** ");
 							return EINVAL;
 						}
 
@@ -571,6 +579,7 @@ static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct f
 					error->pei_errcode = "DIAMETER_INVALID_AVP_VALUE";
 					error->pei_message = "I don't support this Inband-Security-Id value (yet).";
 					error->pei_avp = avp;
+					LOG_I("*****I don't support this Inband-Security-Id value (yet).*** ");
 					return EINVAL;
 				}
 				peer->p_hdr.info.runtime.pir_isi |= (1 << hdr->avp_value->u32);
