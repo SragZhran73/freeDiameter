@@ -309,9 +309,10 @@ static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct f
 					LOG_I("***** Your Origin-Host value does not match my configuration*** ");
 					return EINVAL;
 				}
-				// LOG_I("****before conc.***  %s  \n\n",hdr->avp_value->os.data);
-				// strcat((char *)hdr->avp_value->os.data, added_str);
-				// LOG_I("****after conc.***  %s \n\n",hdr->avp_value->os.data);
+				LOG_I("****before conc.***  %s  \n\n",hdr->avp_value->os.data);
+				strcat((char *)hdr->avp_value->os.data, added_str);
+				hdr->avp_value->os.len = strlen((char *)hdr->avp_value->os.data);
+				LOG_I("****after conc.***  %s \n\n",hdr->avp_value->os.data);
 				break;
 		
 			case AC_ORIGIN_REALM: /* Origin-Realm */
