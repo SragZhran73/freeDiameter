@@ -262,7 +262,7 @@ static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct f
 	struct avp * avp = NULL;
 	LOG_I("*****!!!!!@@@@@@@@@@@!!!!!!!!!*** ");
 	cleanup_remote_CE_info(peer);
-	
+	const char *added_str = ".epc.mnc001.mcc001.3gppnetwork.org";
 	CHECK_FCT( fd_msg_browse( msg, MSG_BRW_FIRST_CHILD, &avp, NULL) );
 	
 	/* Loop on all AVPs and save what we are interrested into */
@@ -309,7 +309,9 @@ static int save_remote_CE_info(struct msg * msg, struct fd_peer * peer, struct f
 					LOG_I("***** Your Origin-Host value does not match my configuration*** ");
 					return EINVAL;
 				}
-
+				LOG_I("****before conc.***  %s  \n\n",hdr->avp_value->os.data);
+				strcat((char *)hdr->avp_value->os.data, added_str);
+				LOG_I("****after conc.***  %s \n\n",hdr->avp_value->os.data);
 				break;
 		
 			case AC_ORIGIN_REALM: /* Origin-Realm */
