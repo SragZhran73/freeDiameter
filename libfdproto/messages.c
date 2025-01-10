@@ -2094,7 +2094,7 @@ static int parsedict_do_avp(struct dictionary * dict, struct avp * avp, int mand
 		}
 	}
 	LOG_I("^^^^^**** the avp CODE = %d  ^^^^^*** \n",avp->avp_public.avp_code);
-	LOG_I("^^^^^**** NOT FOUND avp CODE = %d  ^^^^^*** \n",avp->avp_model_not_found.mnf_code);
+
 	/* First handle the case where we have not found this AVP in the dictionary */
 	if (!avp->avp_model) {
 		
@@ -2110,7 +2110,7 @@ static int parsedict_do_avp(struct dictionary * dict, struct avp * avp, int mand
 				LOG_E("Unsupported AVP: %s", buf);
 				free(buf);
 			}
-			return ENOTSUP;
+			return 0;
 		}
 		
 		if (avp->avp_source) {
@@ -2270,12 +2270,11 @@ static int parsedict_do_avp(struct dictionary * dict, struct avp * avp, int mand
 static int parsedict_do_chain(struct dictionary * dict, struct fd_list * head, int mandatory, struct fd_pei *error_info)
 {
 	struct fd_list * avpch;
-	
+
 	TRACE_ENTRY("%p %p %d %p", dict, head, mandatory, error_info);
-	
+	//srag
 	/* Sanity check */
 	ASSERT ( head == head->head );
-	
 	/* Now process the list */
 	for (avpch=head->next; avpch != head; avpch = avpch->next) {
 		CHECK_FCT(  parsedict_do_avp(dict, _A(avpch->o), mandatory, error_info)  );
