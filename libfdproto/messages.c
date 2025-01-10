@@ -2098,37 +2098,37 @@ static int parsedict_do_avp(struct dictionary * dict, struct avp * avp, int mand
 	/* First handle the case where we have not found this AVP in the dictionary */
 	if (!avp->avp_model) {
 		
-		if (mandatory && (avp->avp_public.avp_flags & AVP_FLAG_MANDATORY)) {
-			TRACE_DEBUG(INFO, "Unsupported mandatory AVP found");
-			if (error_info) {
-				error_info->pei_errcode = "DIAMETER_AVP_UNSUPPORTED";
-				error_info->pei_avp = avp;
-			} else {
-				char * buf = NULL;
-				size_t buflen;
-				CHECK_MALLOC(fd_msg_dump_treeview(&buf, &buflen, NULL, avp, NULL, 0, 0));
-				LOG_E("Unsupported AVP: %s", buf);
-				free(buf);
-			}
-			return ENOTSUP;
-		}
+		// if (mandatory && (avp->avp_public.avp_flags & AVP_FLAG_MANDATORY)) {
+		// 	TRACE_DEBUG(INFO, "Unsupported mandatory AVP found");
+		// 	if (error_info) {
+		// 		error_info->pei_errcode = "DIAMETER_AVP_UNSUPPORTED";
+		// 		error_info->pei_avp = avp;
+		// 	} else {
+		// 		char * buf = NULL;
+		// 		size_t buflen;
+		// 		CHECK_MALLOC(fd_msg_dump_treeview(&buf, &buflen, NULL, avp, NULL, 0, 0));
+		// 		LOG_E("Unsupported AVP: %s", buf);
+		// 		free(buf);
+		// 	}
+		// 	return ENOTSUP;
+		// }
 		
-		if (avp->avp_source) {
-			/* we must copy the data from the source to the internal buffer area */
-			CHECK_PARAMS( !avp->avp_rawdata  );
+		// if (avp->avp_source) {
+		// 	/* we must copy the data from the source to the internal buffer area */
+		// 	CHECK_PARAMS( !avp->avp_rawdata  );
 			
-			avp->avp_rawlen = avp->avp_public.avp_len - GETAVPHDRSZ( avp->avp_public.avp_flags );
+		// 	avp->avp_rawlen = avp->avp_public.avp_len - GETAVPHDRSZ( avp->avp_public.avp_flags );
 			
-			if (avp->avp_rawlen) {
-				CHECK_MALLOC(  avp->avp_rawdata = malloc(avp->avp_rawlen)  );
+		// 	if (avp->avp_rawlen) {
+		// 		CHECK_MALLOC(  avp->avp_rawdata = malloc(avp->avp_rawlen)  );
 			
-				memcpy(avp->avp_rawdata, avp->avp_source, avp->avp_rawlen);
-			}
+		// 		memcpy(avp->avp_rawdata, avp->avp_source, avp->avp_rawlen);
+		// 	}
 			
-			avp->avp_source = NULL;
+		// 	avp->avp_source = NULL;
 			
-			TRACE_DEBUG(FULL, "Unsupported optional AVP found, raw source data saved in avp_rawdata.");
-		}
+		// 	TRACE_DEBUG(FULL, "Unsupported optional AVP found, raw source data saved in avp_rawdata.");
+		// }
 		
 		return 0;
 	}
