@@ -7350,6 +7350,16 @@
       "Vendor": 10415
     },
     {
+      "Code": 1709,
+      "Flags": {
+        "Must": "VM",
+        "MustNot": ""
+      },
+      "Name": "IAB-Operation-Permission",
+      "Type": "Enumerated",
+      "Vendor": 10415
+    },
+    {
       "Code": 1418,
       "Flags": {
         "Must": "VM",
