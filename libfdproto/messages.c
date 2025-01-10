@@ -2060,7 +2060,6 @@ static int parsedict_do_avp(struct dictionary * dict, struct avp * avp, int mand
 	
 	if (avp->avp_model != NULL) {
 		/* the model has already been resolved. we do check it is still valid */
-		avp->avp_mode
 		LOG_I("^^^^^**** the avp CODE = %d  ^^^^^**** \n",avp->avp_public.avp_code);
 		CHECK_FCT(  fd_dict_getval(avp->avp_model, &dictdata)  );
 
