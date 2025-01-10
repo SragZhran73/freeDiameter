@@ -2110,7 +2110,7 @@ static int parsedict_do_avp(struct dictionary * dict, struct avp * avp, int mand
 				LOG_E("Unsupported AVP: %s", buf);
 				free(buf);
 			}
-			return 0;
+			return ENOTSUP;
 		}
 		
 		if (avp->avp_source) {
