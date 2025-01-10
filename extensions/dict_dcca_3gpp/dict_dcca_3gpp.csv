@@ -1072,6 +1072,7 @@ LCS-Info,1473,7.3.84,Grouped,"M,V",,,
 GMLC-Number,1474,7.3.85,OctetString,"M,V",,,
 LCS-PrivacyException,1475,7.3.86,Grouped,"M,V",,,
 SS-Code,1476,7.3.87,OctetString,"M,V",,,
+IAB-Operation-Permission,1709,7.3.232,Enumerated,"M,V",,,
 # Note: 3GPP TS 29.272 V12.5.0 (2014-06) Table 7.3.1/1,,,,,,,
 # changed row SS-Status (1477) to be OctetString instead of Grouped.,,,,,,,
 # Clause 7.3.88 already described SS-Status (1147) as OctetString.,,,,,,,
@@ -1226,6 +1227,7 @@ Paging-Time-Window-Length,1703,7.3.228,OctetString,V,,,M
 Core-Network-Restrictions,1704,7.3.230,Unsigned32,V,,,M
 eDRX-Related-RAT,1705,7.3.229,Grouped,V,,,M
 Interworking-5GS-Indicator,1706,7.3.231,Enumerated,V,,,M
+
 ,,,,,,,
 @standard,3GPP TS 29.273,,,,,,
 #=,,,,,,,

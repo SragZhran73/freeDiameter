@@ -737,6 +737,7 @@
 | Measurement-Quantity                                          | 1660 |         7.3.171 | OctetString      | V    |     |          | M        | N    |
 | Event-Threshold-Event-1F                                      | 1661 |         7.3.172 | Integer32        | V    |     |          | M        | N    |
 | Event-Threshold-Event-1I                                      | 1662 |         7.3.173 | Integer32        | V    |     |          | M        | N    |
+| Network-Access-Mode                                           | 1709 |         7.3.174 | Enumerated       | M,V  |     |          |          | N    |
 | # 3GPP 29.329-b50 (11.5.0 2012.12.21)                         |      |                 |                  |      |     |          |          |      |
 | User-Identity                                                 |  700 |           6.3.1 | Grouped          | M,V  |     |          |          | N    |
 | MSISDN                                                        |  701 |           6.3.2 | OctetString      | M,V  |     |          |          | N    |
