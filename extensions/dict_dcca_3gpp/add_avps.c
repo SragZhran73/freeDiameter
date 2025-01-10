@@ -8141,6 +8141,21 @@ int add_avps()
 		CHECK_dict_new(DICT_TYPE, &tdata, NULL, &type);
 		CHECK_dict_new(DICT_AVP, &data, type, NULL);
 	};
+	/* Network-Access-Mode, Enumerated, code 1417, section 7.3.21       */
+	{
+		struct dict_avp_data data = {
+			1709,	/* Code */
+			10415,	/* Vendor */
+			"IAB-Operation-Permission",	/* Name */
+			AVP_FLAG_VENDOR |AVP_FLAG_MANDATORY,	/* Fixed flags */
+			AVP_FLAG_VENDOR |AVP_FLAG_MANDATORY,	/* Fixed flag values */
+			AVP_TYPE_INTEGER32	/* base type of data */
+		};
+		struct dict_object	*type;
+		struct dict_type_data	 tdata = { AVP_TYPE_INTEGER32, "Enumerated(3GPP/IAB-Operation-Permission)", NULL, NULL, NULL };
+		CHECK_dict_new(DICT_TYPE, &tdata, NULL, &type);
+		CHECK_dict_new(DICT_AVP, &data, type, NULL);
+	};
 
 	/* HPLMN-ODB, Unsigned32, code 1418, section 7.3.22                 */
 	{
